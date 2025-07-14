@@ -1,9 +1,9 @@
 services:
   - type: web
-    name: my-python-app
+    name: CtrlAltDelusion
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: gunicorn app:app
+    startCommand: python -m gunicorn web:app -k uvicorn.workers.UvicornWorker
     envVars:
       - key: DISCORD_BOT_TOKEN
         generateValue: true
