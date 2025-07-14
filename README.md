@@ -1,6 +1,6 @@
 # CtrlAltDelusion
 
-This is not your adverage Discord bot. Well actually, it is but that is besides the point. Add some flair to your channel with handlebar ai generated completions. Having a bad day but don't know how to complete it? Just add {{Value}} to your message and let CtrlAltDelusion pick it up from there.
+This is not your average Discord bot. Well actually, it is but that is besides the point. Add some flair to your channel with handlebar ai generated completions. Having a bad day but don't know how to complete it? Just add {{Value}} to your message and let CtrlAltDelusion pick it up from there.
 
 ## Environment Variables
 
@@ -57,3 +57,7 @@ _Example_:
 _Input: "well {{military dark humor}}."_
 
 _Output: "well the coffee is a lie._
+
+## Run Locally
+
+CtrlAltDelusion is currently set up to be deployed on [Render](https://dashboard.render.com/) as a Webservice.
