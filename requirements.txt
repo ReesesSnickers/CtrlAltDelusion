@@ -12,3 +12,4 @@ wheel==0.45.1
 yarl==1.20.1
 python-dotenv==1.1.1
 quart==0.20.0
+openai==1.95.1
