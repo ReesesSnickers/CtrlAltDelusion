@@ -45,7 +45,7 @@ To run this project, you will need to add the following environment variables to
 5. Start the server
 
 ```bash
-  python3 bot.py
+  python3 main.py
 ```
 
 ## Useage
