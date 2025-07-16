@@ -64,4 +64,4 @@ CtrlAltDelusion is currently set up to be deployed on [Render](https://dashboard
 
 ## Contributors
 
-- ReesesSnickers
+- [ReesesSnickers](https://github.com/ReesesSnickers)
