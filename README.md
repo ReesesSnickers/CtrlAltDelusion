@@ -61,3 +61,7 @@ _Output: "well the coffee is a lie._
 ## Run Locally
 
 CtrlAltDelusion is currently set up to be deployed on [Render](https://dashboard.render.com/) as a Webservice.
+
+## Contributors
+
+- ReesesSnickers
