@@ -5,5 +5,5 @@ upload_to_pypi = false
 changelog_file = "CHANGELOG.md"
 tag_format = "v{version}"
 upload_to_release = true
-build_command = false
-commit_parser = "angular"
+build_command = ""
+commit_parser = "conventional"
