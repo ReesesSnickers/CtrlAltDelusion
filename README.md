@@ -40,7 +40,7 @@ To run this project, you will need to add the following environment variables to
   pip3 install -r /path/to/requirements.txt
 ```
 
-4. Create a .env file at the root of the project and add the appropriate environemental variables
+4. Create a .env file at the root of the project and add the appropriate environmental variables
 
 5. Start the server
 
@@ -50,7 +50,7 @@ To run this project, you will need to add the following environment variables to
 
 ## Useage
 
-Any time a user in your channel makes a statment using `{{}}`, the bot will interpret the content and generate a statement to replace the `{{}}` within the statement that was provided.
+Any time a user in your channel makes a statement using `{{}}`, the bot will interpret the content and generate a statement to replace the `{{}}` within the statement that was provided.
 
 _Example_:
 
@@ -61,6 +61,20 @@ _Output: "well the coffee is a lie._
 ## Run Locally
 
 CtrlAltDelusion is currently set up to be deployed on [Render](https://dashboard.render.com/) as a Webservice.
+
+## Committing using symantic release
+
+Symantic release requires commit messages to be formatted in a particular way. Please see below around these requirements:
+
+feat: message - New feature (minor version bump)
+fix: message - Bug fix (patch version bump)
+BREAKING CHANGE: message - Breaking API change (major version bump)
+chore: message - Maintenance changes (no version bump)
+docs: message - Documentation only (no version bump)
+style: message - Code style changes (no version bump)
+refactor: message - Code refactoring (no version bump)
+perf: message - Performance improvements (no version bump)
+test: message - Adding tests (no version bump)
 
 ## Contributors
 

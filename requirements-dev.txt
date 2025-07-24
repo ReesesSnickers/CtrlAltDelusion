@@ -1,0 +1,4 @@
+python-semantic-release==8.3.0
+pytest
+black
+flake8
