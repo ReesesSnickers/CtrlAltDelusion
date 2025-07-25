@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from logger import logger
+from src.bot.logger import logger
 
 def detect_mood(text):
     if not text or not isinstance(text, str):

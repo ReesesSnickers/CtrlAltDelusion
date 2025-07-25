@@ -10,15 +10,34 @@ To run this project, you will need to add the following environment variables to
 
 - `DISCORD_BOT_TOKEN` - Your personal bot token from Discord. Don't have a Discord bot token? Navigate to the [Discord developer portal](https://discord.com/developers) and get started today!
 
+- `APP_URL` - http://localhost:5000
+
+- `APP_ENV` - local
+
 ## Run Locally
 
 ### Prerequisites
 
+### Dependency Requirements
 1. You will need a OpenAI API token to run this project. Don't have a OpenAI API Key? Navigate to [OpenAI](https://platform.openai.com/) and set up your account today!
 2. You will need to set up a Discord bot and obtain a API key with the following permissions and settings:
 
 - Server Members Intent
 - Message Content Intent
+
+### Python Requirements
+1. Python 3.13
+2. Install local certificates:
+```bash
+/Applications/Python\ 3.13/Install\ Certificates.command
+```
+
+### Node.js Requirements
+1. Node.js (for semantic-release)
+2. Install semantic-release globally:
+```bash
+npm install -g semantic-release
+```
 
 ### Local
 
@@ -45,7 +64,12 @@ To run this project, you will need to add the following environment variables to
 5. Start the server
 
 ```bash
-  python3 main.py
+  python3 -m src.bot.main 
+```
+OR
+
+```bash
+python3 src/bot/main.py
 ```
 
 ## Useage
@@ -75,6 +99,23 @@ style: message - Code style changes (no version bump)
 refactor: message - Code refactoring (no version bump)
 perf: message - Performance improvements (no version bump)
 test: message - Adding tests (no version bump)
+
+## Testing Semantic Release
+
+Test semantic-release locally before pushing:
+
+```bash
+# Install semantic-release CLI
+npm install -g semantic-release
+
+# Run dry-run to verify setup
+semantic-release --dry-run
+
+# Commit format examples:
+feat: new feature (minor version bump)
+fix: bug fix (patch version bump)
+BREAKING CHANGE: major changes (major version bump)
+```
 
 ## Contributors
 
