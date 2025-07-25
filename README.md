@@ -100,6 +100,23 @@ refactor: message - Code refactoring (no version bump)
 perf: message - Performance improvements (no version bump)
 test: message - Adding tests (no version bump)
 
+## Testing Semantic Release
+
+Test semantic-release locally before pushing:
+
+```bash
+# Install semantic-release CLI
+npm install -g semantic-release
+
+# Run dry-run to verify setup
+semantic-release --dry-run
+
+# Commit format examples:
+feat: new feature (minor version bump)
+fix: bug fix (patch version bump)
+BREAKING CHANGE: major changes (major version bump)
+```
+
 ## Contributors
 
 - [ReesesSnickers](https://github.com/ReesesSnickers)
