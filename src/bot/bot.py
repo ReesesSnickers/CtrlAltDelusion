@@ -1,10 +1,9 @@
 import discord
 import re
 from discord.ext import commands
-from mood_engine import detect_mood
-from response_engine import generate_response
-from logger import logger
-from discord.ext import commands
+from src.bot.mood_engine import detect_mood
+from src.bot.response_engine import generate_response
+from src.bot.logger import logger
 
 intents = discord.Intents.default()
 intents.message_content = True
@@ -45,6 +44,9 @@ async def on_message(message):
 
     # Process the message to the Discord channel
     await bot.process_commands(message)
+
+async def start(token):
+    await bot.start(token)
 
 if __name__ == "__main__":
     print("🛑 Don't run bot.py directly! Use main.py.")
