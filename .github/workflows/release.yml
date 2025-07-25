@@ -9,17 +9,31 @@ permissions:
   contents: write
   issues: write
   pull-requests: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v4
+        with:
+          fetch-depth: 0
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Python Setup
+        uses: actions/setup-python@v4
         with:
           python-version: "3.12"
-      - run: pip install python-semantic-release
-      - name: Fetch tags
-        run: git fetch --tags
-      - run: semantic-release publish
+      
+      - name: Install dependencies
+        run: |
+          pip install python-semantic-release==8.3.0
+      
+      - name: Git config
+        run: |
+          git config --global user.name "github-actions"
+          git config --global user.email "github-actions@github.com"
+      
+      - name: Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: semantic-release publish
