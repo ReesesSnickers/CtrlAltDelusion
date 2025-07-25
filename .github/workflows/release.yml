@@ -29,6 +29,7 @@ jobs:
           python -m pip install --upgrade pip
           pip install python-semantic-release==8.3.0
           pip install importlib-metadata
+          pip install toml
       
       - name: Git config
         run: |
