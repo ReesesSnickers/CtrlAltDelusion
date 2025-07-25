@@ -1,17 +1,12 @@
 import asyncio
 import os
-import aiohttp
+import aiohttp  # ← ADD THIS
 import signal
-import ssl
-import certifi
 import sys
-from pathlib import Path
-sys.path.append(str(Path(__file__).parent.parent.parent))
 from dotenv import load_dotenv
-from src.web import app
-from src.bot import bot
-from src.bot.logger import logger
-from src.bot.bot import start as bot_start
+from web import app
+from bot import bot
+from logger import logger
 
 load_dotenv()
 
@@ -19,25 +14,16 @@ async def shutdown():
     logger.info("🧹 Délulu bot is low on energy and is shutting down...")
     await bot.close()
 
-ssl_context = ssl.create_default_context(cafile=certifi.where())
-
 # 🌡️ Keep Render Awake
 async def keep_alive():
-    app_env = os.getenv('APP_ENV', '')
-    app_url = os.getenv('APP_URL', 'https://ctrlaltdelusion.onrender.com')
-    sleep_interval = 30 if app_env == 'local' else 780  # every 13 minutes. Render spools down every 15 minutes for free tier in production
-    
-    # Create single session for entire function
-    connector = aiohttp.TCPConnector(ssl=ssl_context)
-    session = aiohttp.ClientSession(connector=connector)
-
     while True:
         try:
-            async with session.get(f"{app_url}/health") as resp:
-                logger.info(f"🫀 Keep-alive ping responded with status: {resp.status}")
+            async with aiohttp.ClientSession() as session:
+                async with session.get("https://ctrlaltdelusion.onrender.com/health") as resp:
+                    logger.info(f"🫀 Keep-alive ping responded with status: {resp.status}")
         except Exception as error:
             logger.warning(f"🥶 Délulu ping failed: {error}")
-        await asyncio.sleep(sleep_interval)
+        await asyncio.sleep(780)  # every 13 minutes. Render spools down every 15 minutes for free tier
 
 async def run_all():
     loop = asyncio.get_running_loop()
@@ -62,7 +48,7 @@ async def run_all():
     if not discord_api_key or not openai_api_key:
         raise EnvironmentError("Missing DISCORD_BOT_TOKEN or OPENAI_API_KEY")
     logger.info('🌋 Délulu bot is having a meltdown in the bed')
-    bot_task = asyncio.create_task(bot_start(discord_api_key))
+    bot_task = asyncio.create_task(bot.start(discord_api_key))
     logger.info('💭 Délulu bot is making its decision...')
 
     done, pending = await asyncio.wait(
