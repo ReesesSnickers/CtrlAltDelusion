@@ -1,6 +1,6 @@
 import os
 from openai import OpenAI
-from src.bot.logger import logger
+from logger import logger
 
 def generate_response(origional_response):
     try:

@@ -1,13 +1,11 @@
 services:
   - type: web
-    name: ctrlaltdelusion
+    name: CtrlAltDelusion
     runtime: python
     buildCommand: pip install -r requirements.txt
-    startCommand: python src/bot/main.py
+    startCommand: python main.py
     envVars:
-      - key: PYTHON_VERSION
-        value: 3.12.0
-      - key: DISCORD_TOKEN
-        sync: false
+      - key: DISCORD_BOT_TOKEN
+        generateValue: true
       - key: OPENAI_API_KEY
-        sync: false
+        generateValue: true
