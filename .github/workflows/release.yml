@@ -13,30 +13,27 @@ permissions:
 jobs:
   release:
     runs-on: ubuntu-latest
+    concurrency: release
     steps:
       - uses: actions/checkout@v3
         with:
           fetch-depth: 0
-          token: ${{ secrets.GITHUB_TOKEN }}
-      
+
       - name: Python Setup
         uses: actions/setup-python@v4
         with:
-          python-version: "3.12"
-      
+          python-version: 3.12
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install python-semantic-release==8.3.0
-          pip install importlib-metadata
-          pip install toml
-      
-      - name: Git config
+          pip install -r requirements-dev.txt
+
+      - name: Semantic Release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           git config --global user.name "github-actions"
           git config --global user.email "github-actions@github.com"
-      
-      - name: Release
-        env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: semantic-release publish
+          semantic-release version
+          semantic-release publish

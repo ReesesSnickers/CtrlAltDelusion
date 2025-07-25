@@ -1,12 +1,15 @@
 [tool.semantic_release]
-version_variable = "__init__.py:__version__"
-branch = "main"
+version_variable = ["__init__.py:__version__"]
+branches.main = {pattern = "main", prerelease = false}
+branches.development = {pattern = "(srf.*|feature.*|fix.*)", prerelease = false}
 upload_to_pypi = false
 changelog_file = "CHANGELOG.md"
 tag_format = "v{version}"
 upload_to_release = true
 build_command = ""
-commit_parser = "semantic_release.commit_parser:conventional"
+commit_parser = "conventional"
 version_source = "commit"
-allow_zero_version = true
-prerelease = false
+major_on_zero = false
+
+[tool.semantic_release.remote]
+token = "GH_TOKEN"
